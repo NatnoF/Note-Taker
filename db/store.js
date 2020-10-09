@@ -25,9 +25,23 @@ class Store
             .then(newNoteArray => this.writeNotes(newNoteArray)); // Writing the created array of note objects above into the db.json
     }
 
+    processNotes()
+    {
+        return this.getNotes()
+            .then(notes => JSON.parse(notes));
+    }
+    
     deleteNote(id)
     {
-        // Nothing for now.
-    }
+        return this.processNotes()
+            .then(notes =>
+                {
+                    var newNotes = notes.filter(note => 
+                        {
+                            return note.id != id
+                        });
+                    this.writeNotes(newNotes);
+                });
+    }  
 }
 module.exports = new Store();
