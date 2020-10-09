@@ -11,15 +11,20 @@ module.exports = function(app)
     {
         store.getNotes(res)
             .then(data => JSON.parse(data))
-            .then(notes => res.json(notes))
+            .then(notes => {res.json(notes); id = notes.length + 1;})
     });
 
-    // POST route
-    app.post("/api/notes", function(req,res)
-    {
-        // Nothing for now.
-    });
-
+     // POST route
+     app.post("/api/notes", function(req,res)
+     {
+        store.getNotes()
+            .then(data => JSON.parse(data))
+            .then(notes => id = notes.length)
+            .then(req.body.id = id)
+            .then(store.saveNote(req.body))
+                .then(note=>res.json(note));
+     });
+ 
     // DELETE route
     app.delete("/api/notes/:id", function(req,res)
     {

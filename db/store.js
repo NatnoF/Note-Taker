@@ -14,12 +14,15 @@ class Store
 
     writeNotes(note)
     {
-        // Nothing for now.
+        return writeFileAsync("./db/db.json", JSON.stringify(note));
     }
 
     saveNote (note)
     {
-        // Nothing for now.
+        return this.getNotes()
+            .then(data => JSON.parse(data))
+            .then(notes => [...notes, note]) // Adding the new note to the array of note objects in the json
+            .then(newNoteArray => this.writeNotes(newNoteArray)); // Writing the created array of note objects above into the db.json
     }
 
     deleteNote(id)
