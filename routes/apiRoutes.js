@@ -2,8 +2,28 @@
 const db = require("../db/db.json");
 const store = require("../db/store");
 
-// GET route
-store.getNote();
-// POST route
+var id = 0;
 
-// DELETE
+module.exports = function(app)
+{
+    // GET route
+    app.get("/api/notes", function(req,res)
+    {
+        store.getNotes(res)
+            .then(data => JSON.parse(data))
+            .then(notes => res.json(notes))
+    });
+
+    // POST route
+    app.post("/api/notes", function(req,res)
+    {
+        // Nothing for now.
+    });
+
+    // DELETE route
+    app.delete("/api/notes/:id", function(req,res)
+    {
+        // Nothing for now
+    });
+
+}
