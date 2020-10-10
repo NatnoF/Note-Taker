@@ -5,6 +5,9 @@
 ## Description 
 This project will allow you to create, store, and delete notes. You can enter a title for the note then add a description. Hit the save icon to save it on the lefthand side, where you can then click on it at any time to view it again or press the trashcan symbol to delete it. If you want to create a new note, on the top right there is a pen/pencil symbol to start creating a new note. After creating a note, you will automatically be placed on a new note to create, you do the former when you are viewing an old note and want to write a new one.
 
+## Link to Deployed Application
+https://gentle-fjord-92066.herokuapp.com/
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
